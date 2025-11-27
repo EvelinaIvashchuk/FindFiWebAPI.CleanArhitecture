@@ -1,0 +1,22 @@
+[
+  {
+    "_id": { "$oid": "65682f3a6a5c2f1a0f400001" },
+    "comment": "Спам у повідомленнях",
+    "reasonCode": "spam",
+    "status": "open",
+    "targetType": "message",
+    "createdAt": { "$date": "2025-01-05T07:00:00Z" },
+    "reporterId": 99,
+    "targetId": { "$oid": "65682f3a6a5c2f1a0f210002" }
+  },
+  {
+    "_id": { "$oid": "65682f3a6a5c2f1a0f400002" },
+    "comment": "Образливий відгук",
+    "reasonCode": "abuse",
+    "status": "in_review",
+    "targetType": "review",
+    "createdAt": { "$date": "2025-01-06T09:15:00Z" },
+    "reporterId": 77,
+    "targetId": { "$oid": "65682f3a6a5c2f1a0f000002" }
+  }
+]

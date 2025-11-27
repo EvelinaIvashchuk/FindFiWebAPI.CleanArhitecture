@@ -1,0 +1,18 @@
+[
+  {
+    "_id": { "$oid": "65682f3a6a5c2f1a0f300001" },
+    "createdAt": { "$date": "2025-01-04T08:00:00Z" },
+    "targetId": { "$oid": "65682f3a6a5c2f1a0f000001" },
+    "targetType": "review",
+    "type": "like",
+    "userId": 10
+  },
+  {
+    "_id": { "$oid": "65682f3a6a5c2f1a0f300002" },
+    "createdAt": { "$date": "2025-01-04T08:05:00Z" },
+    "targetId": { "$oid": "65682f3a6a5c2f1a0f210001" },
+    "targetType": "message",
+    "type": "like",
+    "userId": 11
+  }
+]

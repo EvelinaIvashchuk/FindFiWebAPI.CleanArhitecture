@@ -1,0 +1,30 @@
+[
+  {
+    "_id": { "$oid": "65682f3a6a5c2f1a0f000001" },
+    "authorId": 1,
+    "bookingId": 1001,
+    "createdAt": { "$date": "2025-01-01T10:00:00Z" },
+    "updatedAt": { "$date": "2025-01-01T10:00:00Z" },
+    "isVisible": true,
+    "listingId": 101,
+    "photos": ["https://img.example.com/r/1.jpg"],
+    "text": "Гарна квартира, все сподобалося",
+    "title": "Супер!",
+    "rating": 5,
+    "version": 0
+  },
+  {
+    "_id": { "$oid": "65682f3a6a5c2f1a0f000002" },
+    "authorId": 2,
+    "bookingId": 1002,
+    "createdAt": { "$date": "2025-01-03T12:30:00Z" },
+    "updatedAt": { "$date": "2025-01-03T12:30:00Z" },
+    "isVisible": true,
+    "listingId": 101,
+    "photos": [],
+    "text": "Було доволі шумно вночі",
+    "title": "Нормально",
+    "rating": 3,
+    "version": 0
+  }
+]

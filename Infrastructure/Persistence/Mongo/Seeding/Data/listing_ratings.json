@@ -1,0 +1,9 @@
+[
+  {
+    "_id": { "$oid": "65682f3a6a5c2f1a0f100001" },
+    "listingId": 101,
+    "avgRating": 4,
+    "reviews_coreCount": 2,
+    "updatedAt": { "$date": "2025-01-03T12:30:00Z" }
+  }
+]
