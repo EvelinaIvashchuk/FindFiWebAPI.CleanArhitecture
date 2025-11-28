@@ -14,6 +14,35 @@ public sealed class ReviewsController(IMapper mapper) : ApiControllerBase
 {
     private static string MakeEtag(Review review) => $"W/\"{review.UpdatedAt.Ticks}\"";
 
+    [HttpGet]
+    [ProducesResponseType(typeof(ReviewDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetAll([FromQuery] int skip = 0, [FromQuery] int take = 20, [FromQuery] long? cursor = null, CancellationToken ct = default)
+    {
+        IReadOnlyList<Review> items;
+        if (cursor is null)
+        {
+            items = await Mediator.Send(new GetAllReviewsQuery(skip, take), ct);
+        }
+        else
+        {
+            var fetch = Math.Clamp(take * 2, 1, 400);
+            var batch = await Mediator.Send(new GetAllReviewsQuery(0, fetch), ct);
+            items = batch.Where(r => r.UpdatedAt.Ticks > cursor.Value)
+                .OrderByDescending(r => r.CreatedAt)
+                .Take(take)
+                .ToList();
+        }
+
+        var dtos = mapper.Map<IReadOnlyList<ReviewDto>>(items);
+        if (items.Count > 0)
+        {
+            var next = items[^1].UpdatedAt.Ticks.ToString();
+            Response.Headers["X-Next-Cursor"] = next;
+        }
+        return Ok(dtos);
+    }
+    
     [HttpGet("{id}")]
     [ProducesResponseType(typeof(ReviewDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
