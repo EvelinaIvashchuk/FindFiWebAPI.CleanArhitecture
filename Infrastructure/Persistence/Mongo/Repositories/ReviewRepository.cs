@@ -8,6 +8,11 @@ internal sealed class ReviewRepository(IMongoDatabase database) : IReviewReposit
 {
     private readonly IMongoCollection<Review> _collection = database.GetCollection<Review>("reviews");
 
+    public async Task<int> GetReviewsCount(CancellationToken cancellationToken = default)
+    {
+        return (int)await _collection.CountDocumentsAsync(FilterDefinition<Review>.Empty, null, cancellationToken);
+    }
+
     public async Task<IReadOnlyList<Review>> GetAllAsync(int skip = 0, int take = 20, CancellationToken cancellationToken = default)
     {
         return await _collection
